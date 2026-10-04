@@ -1,154 +1,297 @@
-<!-- Header & Navigation -->
-<header class="navbar">
-    <div class="container nav-container">
-        <a href="#" class="logo">
-            <i class="fa-solid fa-fire"></i> กะเพราบางเดิม <span>& ผัดไทนายหัว</span>
-        </a>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#hero">หน้าแรก</a></li>
-            <li><a href="#menu">เมนูแนะนำ</a></li>
-            <li><a href="#about">จุดเด่นร้าน</a></li>
-            <li><a href="#contact">ติดต่อ / แผนที่</a></li>
-        </ul>
-        <button class="cart-btn" onclick="toggleCartModal()">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span class="cart-badge" id="cart-count">0</span>
-        </button>
-        <button class="mobile-toggle" onclick="toggleMobileNav()">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-    </div>
-</header>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กะเพราบางเดิม x ผัดไทนายหัว - สาขาชาตะผดุง ขอนแก่น</title>
 
-<!-- Hero Section -->
-<section id="hero" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-        <span class="badge">รสเด็ด เข้มข้น หอมกลิ่นกระทะ</span>
-        <h1>ร้านกะเพราบางเดิม <br><span class="highlight">ผัดไทนายหัว</span></h1>
-        <p>อร่อยจัดจ้านถึงใจ ผัดไทเส้นนุ่มซอสเข้มข้น และกะเพรารสเด็ดระดับตำนาน ถนนชาตะผดุง ขอนแก่น</p>
-        <div class="hero-btns">
-            <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-utensils"></i> ดูเมนู & สั่งเลย</a>
-            <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-map-location-dot"></i> การเดินทาง</a>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Prompt & Kanit) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-amber-50 text-stone-800 font-sans flex flex-col min-h-screen">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-stone-900/95 backdrop-blur-md text-white shadow-lg border-b border-amber-600/30">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="bg-amber-500 text-stone-950 p-2 rounded-xl font-black text-xl tracking-wider shadow-md transform group-hover:rotate-6 transition-transform">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <div>
+                    <div class="font-display font-bold text-lg leading-tight text-amber-400">กะเพราบางเดิม <span class="text-white">x</span> ผัดไทนายหัว</div>
+                    <div class="text-xs text-stone-400">ถนนชาตะผดุง เมืองขอนแก่น</div>
+                </div>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#about" class="hover:text-amber-400 transition-colors">รู้จักเรา</a>
+                <a href="#menu" class="hover:text-amber-400 transition-colors">เมนูแนะนำ</a>
+                <a href="#order" class="hover:text-amber-400 transition-colors">สั่งอาหาร / คำนวณราคา</a>
+                <a href="#location" class="hover:text-amber-400 transition-colors">แผนที่ & ติดต่อ</a>
+            </nav>
+
+            <a href="tel:0800000000" class="hidden sm:inline-flex items-center space-x-2 bg-amber-500 hover:bg-amber-400 text-stone-950 px-4 py-2 rounded-full font-bold text-sm shadow-md hover:shadow-amber-500/20 transition-all">
+                <i class="fa-solid fa-phone"></i>
+                <span>โทรสั่งอาหาร</span>
+            </a>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- Menu Section -->
-<section id="menu" class="section">
-    <div class="container">
-        <div class="section-title">
-            <h2>เมนูเด็ดประจำร้าน</h2>
-            <p>คัดสรรวัตถุดิบสดใหม่ รสชาติถูกปาก ปริมาณจัดเต็ม</p>
-        </div>
-
-        <!-- Category Filter -->
-        <div class="menu-categories">
-            <button class="cat-btn active" onclick="filterMenu('all', this)">ทั้งหมด</button>
-            <button class="cat-btn" onclick="filterMenu('kaprao', this)">ผัดกะเพรา</button>
-            <button class="cat-btn" onclick="filterMenu('padthai', this)">ผัดไท</button>
-            <button class="cat-btn" onclick="filterMenu('extra', this)">ท็อปปิ้งเพิ่มเติม</button>
-        </div>
-
-        <!-- Menu Grid -->
-        <div class="menu-grid" id="menu-grid">
-            <!-- Javascript will inject cards here -->
-        </div>
-    </div>
-</section>
-
-<!-- About Section -->
-<section id="about" class="section bg-light">
-    <div class="container">
-        <div class="about-wrapper">
-            <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=800&q=80" alt="บรรยากาศร้าน">
+    <!-- Hero Section -->
+    <section class="relative bg-stone-950 text-white overflow-hidden py-16 md:py-24">
+        <div class="absolute inset-0 z-0 opacity-40 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-6xl mx-auto px-4 relative z-10 grid md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6 text-center md:text-left">
+                <span class="inline-block bg-amber-500/20 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase">
+                    📍 ถนนชาตะผดุง ขอนแก่น
+                </span>
+                <h1 class="text-4xl md:text-6xl font-display font-bold leading-tight">
+                    ผัดกะเพราแท้ <br><span class="text-amber-400">ผัดไทเข้มข้น</span> ระดับตำนาน
+                </h1>
+                <p class="text-stone-300 text-base md:text-lg font-light leading-relaxed">
+                    สัมผัสความอร่อยลงตัวของ <b>กะเพราบางเดิม</b> กลิ่นหอมกระทะ ใบกะเพราแท้ๆ ไม่ใส่ถั่วฝักยาว และ <b>ผัดไทนายหัว</b> เข้มข้นกลมกล่อมสูตรเด็ด พร้อมเสิร์ฟความอร่อยร้อนๆ ให้ชาวขอนแก่นแล้ววันนี้!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#menu" class="bg-amber-500 hover:bg-amber-400 text-stone-950 px-6 py-3 rounded-xl font-bold text-center shadow-lg transition-all hover:scale-105">
+                        <i class="fa-solid fa-utensils mr-2"></i> ดูเมนูอาหาร
+                    </a>
+                    <a href="#location" class="bg-stone-800 hover:bg-stone-700 text-white border border-stone-700 px-6 py-3 rounded-xl font-medium text-center transition-all">
+                        <i class="fa-solid fa-map-pin mr-2 text-amber-400"></i> แผนที่ร้าน
+                    </a>
+                </div>
             </div>
-            <div class="about-text">
-                <h2>การันตีความอร่อย <br><span class="text-primary">ตำนานความอร่อยย่านชาตะผดุง</span></h2>
-                <p>ร้านกะเพราบางเดิม ผัดไทนายหัว มุ่งมั่นเสิร์ฟอาหารรสชาติเข้มข้นตามสูตรดั้งเดิม ผัดไทของเราใช้ซอสสูตรพิเศษเคี่ยวเอง หอมกลิ่นมะขามเปียกและพริกแห้ง ส่วนกะเพราผัดแห้งหอมกลิ่นกระทะ ไม่ใส่ผักอื่นเจือปน ให้รสชาติกะเพราแท้ๆ</p>
-                <ul class="features-list">
-                    <li><i class="fa-solid fa-circle-check"></i> วัตถุดิบสดใหม่ วันต่อวัน</li>
-                    <li><i class="fa-solid fa-circle-check"></i> กะเพราแท้ผัดแห้ง หอมกลิ่นกระทะ</li>
-                    <li><i class="fa-solid fa-circle-check"></i> ผัดไทซอสเข้มข้น เส้นเหนียวนุ่ม</li>
-                    <li><i class="fa-solid fa-circle-check"></i> ราคาเป็นกันเอง สบายกระเป๋า</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact & Map Section -->
-<section id="contact" class="section">
-    <div class="container">
-        <div class="section-title">
-            <h2>การเดินทาง & ติดต่อเรา</h2>
-            <p>แวะมาอุดหนุน หรือสั่งอาหารได้เลย!</p>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <div class="info-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>
-                        <h4>ที่ตั้งร้าน</h4>
-                        <p>ถนนชาตะผดุง ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40000</p>
+            <div class="relative flex justify-center">
+                <div class="w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-amber-600 to-red-600 p-2 shadow-2xl relative">
+                    <div class="w-full h-full rounded-full bg-stone-900 flex items-center justify-center p-6 text-center border-4 border-amber-500/50 overflow-hidden">
+                        <div class="space-y-2">
+                            <i class="fa-solid fa-fire-flame-curved text-6xl text-amber-500 animate-pulse"></i>
+                            <h3 class="text-2xl font-display font-bold text-white">หอมกลิ่นกระทะ</h3>
+                            <p class="text-xs text-stone-400">ใช้วัตถุดิบสดใหม่วันต่อวัน ผัดจานต่อจาน</p>
+                        </div>
                     </div>
                 </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-clock"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="about" class="py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-6 bg-amber-50/50 rounded-2xl border border-amber-200/60 flex items-start space-x-4">
+                    <div class="text-amber-600 text-3xl"><i class="fa-solid fa-pepper-hot"></i></div>
                     <div>
-                        <h4>เวลาเปิด - ปิด</h4>
-                        <p>เปิดให้บริการทุกวัน: 09:00 - 20:00 น.</p>
+                        <h4 class="font-bold text-stone-900 text-lg">กะเพราโบราณแท้</h4>
+                        <p class="text-stone-600 text-sm mt-1">ผัดแห้งๆ หอมกลิ่นพริกแห้งและใบกะเพรา ไม่ใส่ผักอื่นเจือปน</p>
                     </div>
                 </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-phone"></i>
+                <div class="p-6 bg-amber-50/50 rounded-2xl border border-amber-200/60 flex items-start space-x-4">
+                    <div class="text-amber-600 text-3xl"><i class="fa-solid fa-bowl-food"></i></div>
                     <div>
-                        <h4>เบอร์โทรศัพท์สั่งอาหาร</h4>
-                        <p><a href="tel:0812345678">081-234-5678</a></p>
+                        <h4 class="font-bold text-stone-900 text-lg">ผัดไทสูตรเข้มข้น</h4>
+                        <p class="text-stone-600 text-sm mt-1">ซอสมะขามเปียกสูตรพิเศษ รสชาติกลมกล่อม เปรี้ยว หวาน เค็ม กำลังดี</p>
                     </div>
                 </div>
-                <div class="contact-btns">
-                    <a href="tel:0812345678" class="btn btn-call"><i class="fa-solid fa-phone"></i> โทรสั่งอาหารทันที</a>
+                <div class="p-6 bg-amber-50/50 rounded-2xl border border-amber-200/60 flex items-start space-x-4">
+                    <div class="text-amber-600 text-3xl"><i class="fa-solid fa-store"></i></div>
+                    <div>
+                        <h4 class="font-bold text-stone-900 text-lg">พิกัดชาตะผดุง</h4>
+                        <p class="text-stone-600 text-sm mt-1">ตั้งอยู่บนถนนชาตะผดุง อำเภอเมืองขอนแก่น จอดรถสะดวก เดินทางง่าย</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu & Calculator Section -->
+    <section id="menu" class="py-16 bg-amber-50/80">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-stone-900">เมนูอร่อยประจำร้าน</h2>
+                <p class="text-stone-600 mt-2">เลือกสรรเมนูโปรดของคุณ หรือทดลองคำนวณราคามื้อนี้ได้ทันที</p>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- กะเพราบางเดิม -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+                    <div class="flex justify-between items-center border-b border-stone-100 pb-4 mb-4">
+                        <h3 class="text-xl font-bold font-display text-amber-700 flex items-center">
+                            <i class="fa-solid fa-fire mr-2"></i> กะเพราบางเดิม
+                        </h3>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-medium">ผัดแห้ง หอมกระทะ</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-semibold text-stone-800">กะเพราหมูสับ / หมูกรอบ</div>
+                                <div class="text-xs text-stone-500">เสิร์ฟพร้อมข้าวสวยร้อนๆ</div>
+                            </div>
+                            <div class="text-amber-600 font-bold">50 - 65 ฿</div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-semibold text-stone-800">กะเพราเนื้อสับโคขุน</div>
+                                <div class="text-xs text-stone-500">เนื้อนุ่ม รสเข้มข้นจัดจ้าน</div>
+                            </div>
+                            <div class="text-amber-600 font-bold">70 ฿</div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-semibold text-stone-800">กะเพราทะเล (กุ้ง/หมึก)</div>
+                                <div class="text-xs text-stone-500">อาหารทะเลสดใหม่ ตัวใหญ่</div>
+                            </div>
+                            <div class="text-amber-600 font-bold">75 ฿</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ผัดไทนายหัว -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+                    <div class="flex justify-between items-center border-b border-stone-100 pb-4 mb-4">
+                        <h3 class="text-xl font-bold font-display text-amber-700 flex items-center">
+                            <i class="fa-solid fa-utensils mr-2"></i> ผัดไทนายหัว
+                        </h3>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-medium">สูตรเด็ดซอสมะขาม</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-semibold text-stone-800">ผัดไทโบราณ / ไข่ห่อ</div>
+                                <div class="text-xs text-stone-500">เส้นนุ่ม เหนียว กลมกล่อม</div>
+                            </div>
+                            <div class="text-amber-600 font-bold">50 - 60 ฿</div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-semibold text-stone-800">ผัดไทกุ้งสด</div>
+                                <div class="text-xs text-stone-500">กุ้งตัวโต ผัดซอสเข้าเนื้อ</div>
+                            </div>
+                            <div class="text-amber-600 font-bold">75 ฿</div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-semibold text-stone-800">ไข่ดาว / ไข่เยี่ยวม้า (ท็อปปิ้ง)</div>
+                                <div class="text-xs text-stone-500">เครื่องเคียงเพิ่มความอร่อย</div>
+                            </div>
+                            <div class="text-amber-600 font-bold">10 - 15 ฿</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15305.823901980833!2d102.8350!3d16.4322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a05c316a9ad%3A0x4016937e2da2910!2sMueang%20Khon%20Kaen%20District%2C%20Khon%20Kaen!5e0!3m2!1sen!2sth!4v1680000000000!5m2!1sen!2sth" 
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+            <!-- Simple Order Calculator Interactive -->
+            <div id="order" class="bg-stone-900 text-white p-6 md:p-8 rounded-3xl shadow-xl max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold font-display text-amber-400 mb-2 text-center">🧮 คำนวณราคาอาหารประเมิน</h3>
+                <p class="text-stone-400 text-xs text-center mb-6">เลือกรายการอาหารที่คุณต้องการทานเพื่อคำนวณราคาก่อนสั่ง</p>
+                
+                <div class="space-y-4 text-sm">
+                    <div class="flex justify-between items-center bg-stone-800 p-3 rounded-xl">
+                        <span>กะเพราหมูสับ (50฿)</span>
+                        <input type="number" min="0" value="0" id="item1" onchange="calcTotal()" class="w-16 bg-stone-700 text-white text-center rounded-lg py-1 border border-stone-600 focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div class="flex justify-between items-center bg-stone-800 p-3 rounded-xl">
+                        <span>กะเพราหมูกรอบ (65฿)</span>
+                        <input type="number" min="0" value="0" id="item2" onchange="calcTotal()" class="w-16 bg-stone-700 text-white text-center rounded-lg py-1 border border-stone-600 focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div class="flex justify-between items-center bg-stone-800 p-3 rounded-xl">
+                        <span>ผัดไทกุ้งสด (75฿)</span>
+                        <input type="number" min="0" value="0" id="item3" onchange="calcTotal()" class="w-16 bg-stone-700 text-white text-center rounded-lg py-1 border border-stone-600 focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div class="flex justify-between items-center bg-stone-800 p-3 rounded-xl">
+                        <span>ไข่ดาวกรอบ (+10฿)</span>
+                        <input type="number" min="0" value="0" id="item4" onchange="calcTotal()" class="w-16 bg-stone-700 text-white text-center rounded-lg py-1 border border-stone-600 focus:outline-none focus:border-amber-500">
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-stone-800 flex justify-between items-center">
+                    <span class="text-lg font-medium text-stone-300">ราคารวมประมาณ:</span>
+                    <span id="total-price" class="text-3xl font-bold text-amber-400">0 ฿</span>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer>
-    <div class="container footer-content">
-        <p>&copy; 2026 ร้านกะเพราบางเดิม ผัดไทนายหัว ชาตะผดุง ขอนแก่น. All rights reserved.</p>
-    </div>
-</footer>
+    <!-- Location & Contact Section -->
+    <section id="location" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-block bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold">
+                        ข้อมูลร้านค้า
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-stone-900">แวะมาอุดหนุนเราได้ที่ <br><span class="text-amber-600">ถนนชาตะผดุง ขอนแก่น</span></h2>
+                    
+                    <div class="space-y-4 text-stone-600">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-location-dot text-amber-600 text-xl mt-1"></i>
+                            <div>
+                                <strong class="text-stone-800">ที่อยู่:</strong><br>
+                                ถนนชาตะผดุง ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-clock text-amber-600 text-xl mt-1"></i>
+                            <div>
+                                <strong class="text-stone-800">เวลาเปิด - ปิด:</strong><br>
+                                เปิดบริการทุกวัน: 10:00 น. - 20:00 น.
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-phone text-amber-600 text-xl mt-1"></i>
+                            <div>
+                                <strong class="text-stone-800">เบอร์โทรศัพท์สั่งล่วงหน้า:</strong><br>
+                                <a href="tel:0800000000" class="text-amber-600 font-bold hover:underline">080-000-0000</a>
+                            </div>
+                        </div>
+                    </div>
 
-<!-- Cart Modal -->
-<div id="cart-modal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3><i class="fa-solid fa-basket-shopping"></i> ตะกร้าสินค้าของคุณ</h3>
-            <span class="close-btn" onclick="toggleCartModal()">&times;</span>
-        </div>
-        <div class="modal-body" id="cart-items">
-            <!-- Items injected by JS -->
-        </div>
-        <div class="modal-footer">
-            <div class="cart-total">
-                <span>ราคารวมทั้งหมด:</span>
-                <strong id="cart-total-price">0 บาท</strong>
+                    <div class="pt-4 flex space-x-3">
+                        <a href="https://maps.google.com" target="_blank" class="bg-amber-500 hover:bg-amber-400 text-stone-950 px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm transition-all flex items-center">
+                            <i class="fa-solid fa-diamond-turn-right mr-2"></i> นำทางด้วย Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed Simulation -->
+                <div class="rounded-3xl overflow-hidden shadow-xl border border-stone-200 h-80 bg-stone-100 relative flex items-center justify-center">
+                    <iframe class="w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15299.7186675034!2d102.831518!3d16.432194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a2a510543e5%3A0xc010214c776097d9!2sNai%20Mueang%2C%20Mueang%20Khon%20Kaen%20District%2C%20Khon%20Kaen!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
-            <button class="btn btn-primary btn-block" onclick="checkout()">ยืนยันรายการสั่งซื้อ</button>
         </div>
-    </div>
-</div>
+    </section>
 
-<!-- Custom Script -->
-<script src="script.js"></script>
+    <!-- Footer -->
+    <footer class="bg-stone-950 text-stone-400 py-8 border-t border-stone-800 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-3">
+            <div class="font-display font-bold text-lg text-white">กะเพราบางเดิม x ผัดไทนายหัว (สาขาถนนชาตะผดุง ขอนแก่น)</div>
+            <p class="text-xs text-stone-500">© 2026 ร้านกะเพราบางเดิม ผัดไทนายหัว ขอนแก่น. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactive Calculator -->
+    <script>
+        function calcTotal() {
+            const p1 = (parseInt(document.getElementById('item1').value) || 0) * 50;
+            const p2 = (parseInt(document.getElementById('item2').value) || 0) * 65;
+            const p3 = (parseInt(document.getElementById('item3').value) || 0) * 75;
+            const p4 = (parseInt(document.getElementById('item4').value) || 0) * 10;
+            
+            const total = p1 + p2 + p3 + p4;
+            document.getElementById('total-price').innerText = total + ' ฿';
+        }
+    </script>
+</body>
+</html>
