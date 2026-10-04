@@ -1,368 +1,154 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>กะเพราบางเดิม x ผัดไทยนายหัว - ถนนชาตะผดุง ขอนแก่น</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- External CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!-- Header & Navigation -->
+<header class="navbar">
+    <div class="container nav-container">
+        <a href="#" class="logo">
+            <i class="fa-solid fa-fire"></i> กะเพราบางเดิม <span>& ผัดไทนายหัว</span>
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#hero">หน้าแรก</a></li>
+            <li><a href="#menu">เมนูแนะนำ</a></li>
+            <li><a href="#about">จุดเด่นร้าน</a></li>
+            <li><a href="#contact">ติดต่อ / แผนที่</a></li>
+        </ul>
+        <button class="cart-btn" onclick="toggleCartModal()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge" id="cart-count">0</span>
+        </button>
+        <button class="mobile-toggle" onclick="toggleMobileNav()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</header>
 
-    <!-- Header / Banner Section -->
-    <header class="hero-header">
-        <div class="overlay"></div>
-        <div class="header-content">
-            <div class="profile-avatar">
-                <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=300&q=80" alt="กะเพราบางเดิม x ผัดไทยนายหัว">
-                <span class="status-badge"><i class="fas fa-store"></i> เปิดให้บริการ</span>
-            </div>
-            <h1>กะเพราบางเดิม <span class="accent-text">x</span> ผัดไทยนายหัว</h1>
-            <p class="tagline">🌶️ กะเพราแท้โบราณ ผัดแห้ง หอมกลิ่นกระทะ & 🍳 ผัดไทยซอสเข้มข้น รสเด็ดเมืองขอนแก่น</p>
-            <div class="location-badge">
-                <i class="fas fa-map-marker-alt"></i> ถนนชาตะผดุง ต.ในเมือง อ.เมืองขอนแก่น จ.ขอนแก่น
-            </div>
+<!-- Hero Section -->
+<section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <span class="badge">รสเด็ด เข้มข้น หอมกลิ่นกระทะ</span>
+        <h1>ร้านกะเพราบางเดิม <br><span class="highlight">ผัดไทนายหัว</span></h1>
+        <p>อร่อยจัดจ้านถึงใจ ผัดไทเส้นนุ่มซอสเข้มข้น และกะเพรารสเด็ดระดับตำนาน ถนนชาตะผดุง ขอนแก่น</p>
+        <div class="hero-btns">
+            <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-utensils"></i> ดูเมนู & สั่งเลย</a>
+            <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-map-location-dot"></i> การเดินทาง</a>
         </div>
-    </header>
+    </div>
+</section>
 
+<!-- Menu Section -->
+<section id="menu" class="section">
     <div class="container">
+        <div class="section-title">
+            <h2>เมนูเด็ดประจำร้าน</h2>
+            <p>คัดสรรวัตถุดิบสดใหม่ รสชาติถูกปาก ปริมาณจัดเต็ม</p>
+        </div>
 
-        <!-- Quick Links Hub -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-paper-plane"></i> สั่งอาหาร & ช่องทางติดต่อ</h2>
-            <div class="links-grid">
-                <a href="https://line.me" target="_blank" class="btn-link btn-line">
-                    <div class="link-icon"><i class="fab fa-line"></i></div>
-                    <div class="link-text">
-                        <span class="title">สั่งผ่าน LINE Official</span>
-                        <span class="subtitle">แชทสั่งตรง / จัดส่งรวดเร็ว</span>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </a>
+        <!-- Category Filter -->
+        <div class="menu-categories">
+            <button class="cat-btn active" onclick="filterMenu('all', this)">ทั้งหมด</button>
+            <button class="cat-btn" onclick="filterMenu('kaprao', this)">ผัดกะเพรา</button>
+            <button class="cat-btn" onclick="filterMenu('padthai', this)">ผัดไท</button>
+            <button class="cat-btn" onclick="filterMenu('extra', this)">ท็อปปิ้งเพิ่มเติม</button>
+        </div>
 
-                <a href="tel:0812345678" class="btn-link btn-phone">
-                    <div class="link-icon"><i class="fas fa-phone-alt"></i></div>
-                    <div class="link-text">
-                        <span class="title">โทรสั่งอาหาร / สอบถาม</span>
-                        <span class="subtitle">081-234-5678</span>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </a>
-
-                <a href="https://maps.google.com" target="_blank" class="btn-link btn-map">
-                    <div class="link-icon"><i class="fas fa-directions"></i></div>
-                    <div class="link-text">
-                        <span class="title">แผนที่ร้าน (Google Maps)</span>
-                        <span class="subtitle">นำทางมายังถนนชาตะผดุง</span>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </a>
-            </div>
-        </section>
-
-        <!-- Delivery Services Links -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-motorcycle"></i> สั่งผ่านแอปเดลิเวอรี</h2>
-            <div class="delivery-grid">
-                <a href="#" class="delivery-card grab">
-                    <i class="fas fa-utensils"></i> GrabFood
-                </a>
-                <a href="#" class="delivery-card lineman">
-                    <i class="fas fa-biking"></i> LINE MAN
-                </a>
-                <a href="#" class="delivery-card foodpanda">
-                    <i class="fas fa-concierge-bell"></i> Foodpanda
-                </a>
-                <a href="#" class="delivery-card shopeefood">
-                    <i class="fas fa-shopping-bag"></i> ShopeeFood
-                </a>
-            </div>
-        </section>
-
-        <!-- Menu Highlights & Order Calculator -->
-        <section class="section">
-            <div class="section-header-flex">
-                <h2 class="section-title"><i class="fas fa-fire"></i> เมนูแนะนำ & เลือกสั่ง</h2>
-                <button class="cart-toggle-btn" onclick="toggleCart()">
-                    <i class="fas fa-shopping-cart"></i> ตระกร้าของฉัน (<span id="cart-count">0</span>)
-                </button>
-            </div>
-
-            <!-- Category Tabs -->
-            <div class="menu-tabs">
-                <button class="tab-btn active" onclick="filterMenu('all')">ทั้งหมด</button>
-                <button class="tab-btn" onclick="filterMenu('kaprao')">เมนูกะเพรา</button>
-                <button class="tab-btn" onclick="filterMenu('padthai')">เมนูผัดไทย</button>
-                <button class="tab-btn" onclick="filterMenu('sides')">ทานเล่น / เครื่องดื่ม</button>
-            </div>
-
-            <!-- Menu Grid -->
-            <div class="menu-grid" id="menu-container">
-                
-                <!-- Item 1 -->
-                <div class="menu-card" data-category="kaprao">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80" alt="กะเพราเนื้อสับโบราณ">
-                        <span class="badge-hot"><i class="fas fa-fire"></i> ขายดี</span>
-                    </div>
-                    <div class="card-body">
-                        <h3>กะเพราเนื้อสับโบราณ (ผัดแห้ง)</h3>
-                        <p>เนื้อสับคัดพิเศษ ผัดพริกแห้งหอมกลิ่นกระทะ ไม่ใส่ถั่วฝักยาว</p>
-                        <div class="price-row">
-                            <span class="price">฿65</span>
-                            <button class="add-btn" onclick="addToCart('กะเพราเนื้อสับโบราณ', 65)"><i class="fas fa-plus"></i> เพิ่มในตระกร้า</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="menu-card" data-category="kaprao">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80" alt="กะเพราหมูกรอบสูตรเด็ด">
-                        <span class="badge-hot"><i class="fas fa-crown"></i> แนะนำ</span>
-                    </div>
-                    <div class="card-body">
-                        <h3>กะเพราหมูกรอบสูตรเด็ด</h3>
-                        <p>หมูกรอบหนังกรอบเนื้อนุ่ม ผัดเข้มข้นรสจัดจ้าน</p>
-                        <div class="price-row">
-                            <span class="price">฿60</span>
-                            <button class="add-btn" onclick="addToCart('กะเพราหมูกรอบสูตรเด็ด', 60)"><i class="fas fa-plus"></i> เพิ่มในตระกร้า</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="menu-card" data-category="padthai">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=500&q=80" alt="ผัดไทยนายหัวกุ้งสด">
-                        <span class="badge-hot"><i class="fas fa-star"></i> เมนูไฮไลท์</span>
-                    </div>
-                    <div class="card-body">
-                        <h3>ผัดไทยนายหัวกุ้งสด</h3>
-                        <p>เส้นจันทน์นุ่มเหนียว ซอสผัดไทยสูตรลับเฉพาะ กุ้งสดตัวโต</p>
-                        <div class="price-row">
-                            <span class="price">฿75</span>
-                            <button class="add-btn" onclick="addToCart('ผัดไทยนายหัวกุ้งสด', 75)"><i class="fas fa-plus"></i> เพิ่มในตระกร้า</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="menu-card" data-category="padthai">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1626804475297-41608e074eb1?auto=format&fit=crop&w=500&q=80" alt="ผัดไทยห่อไข่โบราณ">
-                    </div>
-                    <div class="card-body">
-                        <h3>ผัดไทยห่อไข่โบราณ</h3>
-                        <p>ผัดไทยเส้นเหนียวนุ่ม ละมุนด้วยไข่บางกรอบห่ออย่างละเมียด</p>
-                        <div class="price-row">
-                            <span class="price">฿65</span>
-                            <button class="add-btn" onclick="addToCart('ผัดไทยห่อไข่โบราณ', 65)"><i class="fas fa-plus"></i> เพิ่มในตระกร้า</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="menu-card" data-category="sides">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80" alt="ไข่ดาวกรอบขอบทอง">
-                    </div>
-                    <div class="card-body">
-                        <h3>ไข่ดาวกรอบขอบทอง</h3>
-                        <p>ไข่ดาวขอบกรอบทอดใหม่ร้อนๆ ไข่แดงเยิ้มกำลังดี</p>
-                        <div class="price-row">
-                            <span class="price">฿10</span>
-                            <button class="add-btn" onclick="addToCart('ไข่ดาวกรอบขอบทอง', 10)"><i class="fas fa-plus"></i> เพิ่มในตระกร้า</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="menu-card" data-category="sides">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=500&q=80" alt="น้ำอัญชันมะนาวเย็น">
-                    </div>
-                    <div class="card-body">
-                        <h3>น้ำอัญชันมะนาวเย็น</h3>
-                        <p>เครื่องดื่มสมุนไพรเปรี้ยวหวานสดชื่น ดับกระหายตัดรสเผ็ด</p>
-                        <div class="price-row">
-                            <span class="price">฿25</span>
-                            <button class="add-btn" onclick="addToCart('น้ำอัญชันมะนาวเย็น', 25)"><i class="fas fa-plus"></i> เพิ่มในตระกร้า</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Information & Shop Hours -->
-        <section class="section info-section">
-            <h2 class="section-title"><i class="fas fa-clock"></i> เวลาเปิด-ปิด & ข้อมูลร้าน</h2>
-            <div class="info-card">
-                <div class="info-item">
-                    <i class="fas fa-calendar-alt icon"></i>
-                    <div>
-                        <strong>เปิดให้บริการ:</strong>
-                        <p>ทุกวันจันทร์ - อาทิตย์ (หยุดวันพุธสุดท้ายของเดือน)</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-clock icon"></i>
-                    <div>
-                        <strong>เวลาเปิด-ปิด:</strong>
-                        <p>10:00 น. - 20:30 น.</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marked-alt icon"></i>
-                    <div>
-                        <strong>พิกัดร้าน:</strong>
-                        <p>ถนนชาตะผดุง (ตรงข้ามซอยชาตะผดุง 8) ต.ในเมือง อ.เมืองขอนแก่น จ.ขอนแก่น</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <!-- Menu Grid -->
+        <div class="menu-grid" id="menu-grid">
+            <!-- Javascript will inject cards here -->
+        </div>
     </div>
+</section>
 
-    <!-- Floating Order Drawer / Shopping Cart Modal -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h3><i class="fas fa-shopping-basket"></i> รายการอาหารที่คุณเลือก</h3>
-                <button class="close-btn" onclick="toggleCart()">&times;</button>
+<!-- About Section -->
+<section id="about" class="section bg-light">
+    <div class="container">
+        <div class="about-wrapper">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=800&q=80" alt="บรรยากาศร้าน">
             </div>
-            <div class="cart-body" id="cart-items">
-                <p class="empty-msg">ยังไม่มีรายการอาหารในตระกร้า</p>
-            </div>
-            <div class="cart-footer">
-                <div class="total-row">
-                    <span>ราคารวมทั้งหมด:</span>
-                    <span class="total-price" id="total-price">฿0</span>
-                </div>
-                <button class="checkout-btn" onclick="sendOrderLINE()">
-                    <i class="fab fa-line"></i> สั่งซื้อผ่าน LINE (ส่งรายการเข้าไลน์)
-                </button>
+            <div class="about-text">
+                <h2>การันตีความอร่อย <br><span class="text-primary">ตำนานความอร่อยย่านชาตะผดุง</span></h2>
+                <p>ร้านกะเพราบางเดิม ผัดไทนายหัว มุ่งมั่นเสิร์ฟอาหารรสชาติเข้มข้นตามสูตรดั้งเดิม ผัดไทของเราใช้ซอสสูตรพิเศษเคี่ยวเอง หอมกลิ่นมะขามเปียกและพริกแห้ง ส่วนกะเพราผัดแห้งหอมกลิ่นกระทะ ไม่ใส่ผักอื่นเจือปน ให้รสชาติกะเพราแท้ๆ</p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-circle-check"></i> วัตถุดิบสดใหม่ วันต่อวัน</li>
+                    <li><i class="fa-solid fa-circle-check"></i> กะเพราแท้ผัดแห้ง หอมกลิ่นกระทะ</li>
+                    <li><i class="fa-solid fa-circle-check"></i> ผัดไทซอสเข้มข้น เส้นเหนียวนุ่ม</li>
+                    <li><i class="fa-solid fa-circle-check"></i> ราคาเป็นกันเอง สบายกระเป๋า</li>
+                </ul>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 กะเพราบางเดิม x ผัดไทยนายหัว ถนนชาตะผดุง ขอนแก่น</p>
-        <p class="sub-footer">อร่อย เข้มข้น ถึงเครื่อง ทุกจานทำสดใหม่</p>
-    </footer>
+<!-- Contact & Map Section -->
+<section id="contact" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>การเดินทาง & ติดต่อเรา</h2>
+            <p>แวะมาอุดหนุน หรือสั่งอาหารได้เลย!</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>ที่ตั้งร้าน</h4>
+                        <p>ถนนชาตะผดุง ตำบลในเมือง อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40000</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <h4>เวลาเปิด - ปิด</h4>
+                        <p>เปิดให้บริการทุกวัน: 09:00 - 20:00 น.</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h4>เบอร์โทรศัพท์สั่งอาหาร</h4>
+                        <p><a href="tel:0812345678">081-234-5678</a></p>
+                    </div>
+                </div>
+                <div class="contact-btns">
+                    <a href="tel:0812345678" class="btn btn-call"><i class="fa-solid fa-phone"></i> โทรสั่งอาหารทันที</a>
+                </div>
+            </div>
 
-    <!-- JavaScript Logic -->
-    <script>
-        let cart = [];
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15305.823901980833!2d102.8350!3d16.4322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228a05c316a9ad%3A0x4016937e2da2910!2sMueang%20Khon%20Kaen%20District%2C%20Khon%20Kaen!5e0!3m2!1sen!2sth!4v1680000000000!5m2!1sen!2sth" 
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
 
-        function addToCart(name, price) {
-            const existing = cart.find(item => item.name === name);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({ name: name, price: price, quantity: 1 });
-            }
-            updateCart();
-            
-            // Show toast or slight animation
-            const cartBtn = document.querySelector('.cart-toggle-btn');
-            cartBtn.classList.add('pulse');
-            setTimeout(() => cartBtn.classList.remove('pulse'), 500);
-        }
+<!-- Footer -->
+<footer>
+    <div class="container footer-content">
+        <p>&copy; 2026 ร้านกะเพราบางเดิม ผัดไทนายหัว ชาตะผดุง ขอนแก่น. All rights reserved.</p>
+    </div>
+</footer>
 
-        function updateQuantity(index, delta) {
-            cart[index].quantity += delta;
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            updateCart();
-        }
+<!-- Cart Modal -->
+<div id="cart-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fa-solid fa-basket-shopping"></i> ตะกร้าสินค้าของคุณ</h3>
+            <span class="close-btn" onclick="toggleCartModal()">&times;</span>
+        </div>
+        <div class="modal-body" id="cart-items">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="modal-footer">
+            <div class="cart-total">
+                <span>ราคารวมทั้งหมด:</span>
+                <strong id="cart-total-price">0 บาท</strong>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="checkout()">ยืนยันรายการสั่งซื้อ</button>
+        </div>
+    </div>
+</div>
 
-        function updateCart() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartCount = document.getElementById('cart-count');
-            const totalPriceEl = document.getElementById('total-price');
-
-            let totalCount = 0;
-            let totalPrice = 0;
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p class="empty-msg">ยังไม่มีรายการอาหารในตระกร้า</p>';
-            } else {
-                cartItemsContainer.innerHTML = '';
-                cart.forEach((item, index) => {
-                    const itemTotal = item.price * item.quantity;
-                    totalPrice += itemTotal;
-                    totalCount += item.quantity;
-
-                    const row = document.createElement('div');
-                    row.className = 'cart-item-row';
-                    row.innerHTML = `
-                        <div class="cart-item-info">
-                            <span class="cart-item-name">${item.name}</span>
-                            <span class="cart-item-price">฿${item.price} x ${item.quantity} = ฿${itemTotal}</span>
-                        </div>
-                        <div class="cart-qty-ctrl">
-                            <button onclick="updateQuantity(${index}, -1)">-</button>
-                            <span>${item.quantity}</span>
-                            <button onclick="updateQuantity(${index}, 1)">+</button>
-                        </div>
-                    `;
-                    cartItemsContainer.appendChild(row);
-                });
-            }
-
-            cartCount.textContent = totalCount;
-            totalPriceEl.textContent = `฿${totalPrice}`;
-        }
-
-        function toggleCart() {
-            const modal = document.getElementById('cartModal');
-            modal.classList.toggle('active');
-        }
-
-        function filterMenu(category) {
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const cards = document.querySelectorAll('.menu-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        function sendOrderLINE() {
-            if (cart.length === 0) {
-                alert('กรุณาเลือกรายการอาหารก่อนกดสั่งซื้อครับ');
-                return;
-            }
-
-            let text = '🌶️ *สั่งอาหาร - กะเพราบางเดิม x ผัดไทยนายหัว*%0A';
-            text += '--------------------------------%0A';
-            cart.forEach(item => {
-                text += `• ${item.name} x${item.quantity} = ${item.price * item.quantity} บาท%0A`;
-            });
-            text += '--------------------------------%0A';
-            const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
-            text += `*ราคารวมทั้งหมด: ${total} บาท*%0A`;
-            text += '📍 จัดส่งที่: (กรุณาระบุที่อยู่และเบอร์โทรศัพท์)';
-
-            // Open LINE with prefilled message
-            window.open(`https://line.me/R/msg/text/?${text}`, '_blank');
-        }
-    </script>
-</body>
-</html>
+<!-- Custom Script -->
+<script src="script.js"></script>
